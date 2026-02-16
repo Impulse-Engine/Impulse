@@ -37,5 +37,21 @@
 *.out
 *.app
 
+# (Windows misc.)
+*.exp
+*.lnk
+*.db
+
 # debug information files
 *.dwo
+
+# Visual Studio (Code) directories
+.vscode/
+.vs/
+
+# Visual Studio out Directory
+out/
+
+# Potential Other Build dirs
+build/
+bin/

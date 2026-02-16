@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-14]
+        build_type: [Debug]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install ninja + ccache (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build ccache
+
+      - name: Install Ninja + ccache (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install ninja ccache
+
+      # For some reason ccache is not on Windows :/
+      - name: Install Ninja (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ninja
+
+      # Make MSVC available in PATH for Ninja builds
+      - name: MSVC Dev Cmd (Windows)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      # Cache (Linux/Mac)
+      - name: Cache ccache
+        if: runner.os != 'Windows'
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: ccache-${{ runner.os }}-${{ matrix.build_type }}-${{ hashFiles('**/CMakeLists.txt', '**/*.cmake', '**/*.h', '**/*.hpp', '**/*.c', '**/*.cc', '**/*.cpp') }}
+          restore-keys: |
+            ccache-${{ runner.os }}-${{ matrix.build_type }}-
+            ccache-${{ runner.os }}-
+
+      # Configuration time
+      - name: Configure (CMake)
+        run: >
+          cmake -S . -B build
+          -G Ninja
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          -DIM_BUILD_TESTS=OFF
+          -DIM_BUILD_EXAMPLES=OFF
+          -DIM_PEDANTIC_COMPILING=ON
+        env:
+          # Use ccache automatically on Linux/macOS
+          CMAKE_C_COMPILER_LAUNCHER: ${{ runner.os != 'Windows' && 'ccache' || '' }}
+          CMAKE_CXX_COMPILER_LAUNCHER: ${{ runner.os != 'Windows' && 'ccache' || '' }}
+
+      # Build the things!
+      - name: Build
+        run: cmake --build build --parallel
