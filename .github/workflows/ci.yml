@@ -22,7 +22,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build ccache
+          sudo apt-get install -y ninja-build ccache clang++ clang
 
       - name: Install Ninja + ccache (macOS)
         if: runner.os == 'macOS'
@@ -61,10 +61,11 @@ jobs:
           -DIM_BUILD_EXAMPLES=OFF
           -DIM_PEDANTIC_COMPILING=ON
         env:
-          # Use ccache automatically on Linux/macOS
+          CC: ${{ runner.os == 'Linux' && 'clang' || '' }}
+          CXX: ${{ runner.os == 'Linux' && 'clang++' || '' }}
           CMAKE_C_COMPILER_LAUNCHER: ${{ runner.os != 'Windows' && 'ccache' || '' }}
           CMAKE_CXX_COMPILER_LAUNCHER: ${{ runner.os != 'Windows' && 'ccache' || '' }}
-
+          
       # Build the things!
       - name: Build
         run: cmake --build build --parallel

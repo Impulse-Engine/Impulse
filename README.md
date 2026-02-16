@@ -70,6 +70,9 @@ Requirements are kept intentionally minimal and documented as the project evolve
  - Linux (Clang)
  - macOS (AppleClang)
 
+> [!TIP]
+> If you are worried about your code working on your OS but not others, that's valid. Our workflow compiles against Windows, macOS and Linux so any potential errors would be snuffed out there.
+
 ## Non-Goals
 
 To keep the early scope under control, Impulse intentionally avoids early investment into:
