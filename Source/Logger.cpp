@@ -47,6 +47,7 @@ namespace impulse::log
 				case Level::Info:  return "INFO";
 				case Level::Warn:  return "WARN";
 				case Level::Error: return "ERROR";
+				case Level::Fatal: return "FATAL";
 				default:           return "UNKNOWN";
 			}
 		}
@@ -60,6 +61,7 @@ namespace impulse::log
 				case Level::Info:  return 30;
 				case Level::Warn:  return 40;
 				case Level::Error: return 50;
+				case Level::Fatal: return 90;
 				default:           return 0;
 			}
 		}
