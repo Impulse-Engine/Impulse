@@ -14,7 +14,8 @@
 
 This is the canonical repository for Impulse. Impulse is a powerful, lightweight, runtime-first 3D engine written in C++. Impulse is focused on portability, performance, and rapid iteration. No bloat, no film-length build times.
 
-It is developed primarily to ship **real games,** with the long-term goal of being useful and approchable for the wider community. \
+It is developed primarily to ship **real games,** with the long-term goal of being useful and approchable for the wider community of developers and hackers.
+
 Licensed under **Apache-2.0.**
 
 ## Goals
