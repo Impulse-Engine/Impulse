@@ -22,7 +22,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y ninja-build ccache clang++ clang
+          sudo apt-get install -y ninja-build ccache
 
       - name: Install Ninja + ccache (macOS)
         if: runner.os == 'macOS'
