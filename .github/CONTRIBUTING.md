@@ -59,7 +59,7 @@ At the moment, the bootstrap process is kept intentionally minimal.
 ### On macOS
  - Make sure you have `brew` installed.
  - Make sure you have `cmake` and `ninja` installed.
- - Run the `Setup/BootstrapX.command` script in your terminal.
+ - Run the `Setup/Bootstrap.sh` script in your terminal.
 
 The bootstrap scripts will review your hardware specs, available storage, usable RAM and logical cores, etc.. as well as fetch dependencies that the engine may rely on. The bootstrap process may take a couple minutes, depending on internet connection speeds.
 
@@ -109,6 +109,9 @@ Avoid:
  - Mixing unrelated changes
 
  ## C++ Guidelines for Impulse
+
+> [!IMPORTANT]
+> We **discourage** the use of generative AI for large code submissions. While it has use in small doses, large applications of it ("vibe-coding") are discouraged for this project.
 
  Due to the size of this section, it has been moved to its own document; [`CXX_STANDARDS.md`](./CXX_STANDARDS.md).
 
