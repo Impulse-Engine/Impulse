@@ -93,11 +93,11 @@ See the `[LICENSE](./LICENSE)` for full details.
 
 ## Contributing
 
-Contributions are welcome. The full guide, standards and setup instructions can be found in `[CONTRIBUTING.md](./.github/CONTRIBUTING.md)`
+Contributions are welcome. The full guide, standards and setup instructions can be found in [`CONTRIBUTING.md`](./.github/CONTRIBUTING.md)
 
 ## Security
 
-Security issues and the reporting procedure is outlined in `[SECURITY.md](./.github/SECURITY.md)`
+Security issues and the reporting procedure is outlined in [`SECURITY.md`](./.github/SECURITY.md)
 
 ## Disclaimer
 
