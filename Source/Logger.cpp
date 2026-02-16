@@ -66,7 +66,7 @@ namespace impulse::log
 
 		static Level parse_level(const char* s) noexcept
 		{
-			if (!s || !) return Level::Info;
+			if (!s || !*s) return Level::Info;
 
 			auto eq = [](const char* a, const char* b)
 			{
@@ -185,7 +185,7 @@ namespace impulse::log
 		line.append(")\n");
 
 		// Console sink
-		write_console_line(line.c_str(), err_stream)
+		write_console_line(line.c_str(), err_stream);
 
 		if (g_sink.file_enabled)
 		{

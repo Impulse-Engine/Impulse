@@ -10,6 +10,7 @@ namespace impulse::log
 {
 	enum class Level : uint8_t
 	{
+		Trace,
 		Debug,
 		Info,
 		Warn,
@@ -20,7 +21,7 @@ namespace impulse::log
 	bool enabled(Level lvl, std::string_view category) noexcept;
 
 	// Non-templated entrypoint
-	void write(Level lvl, std::string_view cat, std::string_view msg, std::source_location where = std::source_location::current());
+	void write(Level lvl, std::string_view cat, std::string_view msg, std::source_location where = std::source_location::current()) noexcept;
 
 	// Templated convenience func with comp-time format checking
 	template<Level L, typename... Args>
