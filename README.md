@@ -68,3 +68,38 @@ Requirements are kept intentionally minimal and documented as the project evolve
  - Windows (MSVC)
  - Linux (Clang)
  - macOS (AppleClang)
+
+## Non-Goals
+
+To keep the early scope under control, Impulse intentionally avoids early investment into:
+ - A full renderer
+ - Visual scripting systems
+ - An editor
+ - Physics implementation
+ - Networking
+
+Initial focus is on correctness, stability and clean architecture.
+
+## License
+
+Impulse is licensed under the **Apache License 2.0.** \
+This allows:
+ - Commercial use
+ - Modification
+ - Distribution
+ - Private use
+
+See the `[LICENSE](./LICENSE)` for full details.
+
+## Contributing
+
+Contributions are welcome. The full guide, standards and setup instructions can be found in `[CONTRIBUTING.md](./.github/CONTRIBUTING.md)`
+
+## Security
+
+Security issues and the reporting procedure is outlined in `[SECURITY.md](./.github/SECURITY.md)`
+
+## Disclaimer
+
+Impulse is an experimental and ever-evolving project. \
+APIs and arcitecture are subject to frequent change during early development.
