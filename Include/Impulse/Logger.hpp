@@ -6,6 +6,10 @@
 #include <iomanip>
 #include <ctime>
 
+#if defined(__linux__)
+    #include <cstdint>
+#endif
+
 namespace Impulse::Logger
 {
     enum class LogLevel : uint8_t
