@@ -14,13 +14,13 @@
 
 This is the canonical repository for Impulse. Impulse is a powerful, lightweight, runtime-first 3D engine written in C++. Impulse is focused on portability, performance, and rapid iteration. No bloat, no film-length build times.
 
-It is developed primarily to ship **real games,** with the long-term goal of being useful and approchable for the wider community of developers and hackers.
+It is developed primarily to ship **real games,** with the long-term goal of being useful and approachable for the wider community of developers and hackers.
 
 Licensed under **Apache-2.0.**
 
 ## Goals
 
-Impulse aims to answer a simple idea:
+Impulse aims to answer a simple question:
 
 > What if a powerful C++ engine existed that didn't require a workstation to build, and could work across most hardware?
 
@@ -93,7 +93,7 @@ This allows:
  - Distribution
  - Private use
 
-See the `[LICENSE](./LICENSE)` for full details.
+See the [`LICENSE`](./LICENSE) for full details.
 
 ## Contributing
 
@@ -106,4 +106,4 @@ Security issues and the reporting procedure is outlined in [`SECURITY.md`](./.gi
 ## Disclaimer
 
 Impulse is an experimental and ever-evolving project. \
-APIs and arcitecture are subject to frequent change during early development.
+APIs and architecture are subject to frequent change during early development.
