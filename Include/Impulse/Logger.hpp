@@ -39,10 +39,11 @@ namespace Impulse::Logger
             case LogLevel::WARN: return "Warn";
             case LogLevel::ERROR: return "Error";
             case LogLevel::FATAL: return "Fatal";
+            default: return "Unknown";
         }
     }
 
-    inline void logf(LogLevel lvl, std::string msg)
+    inline void logf(LogLevel lvl, const std::string msg, const char *file, const char *func)
     {
         std::string current = getTimeNow();
         std::string lvl_text = getLevelAsString(lvl);
@@ -51,18 +52,20 @@ namespace Impulse::Logger
         {
             std::cerr << "[" << current << "] "
                     << "[" << lvl_text << "] "
-                    << "[" << __func__  << "] "
-                    << "[" << __FILE__ << "]: "
+                    << "[" << func << "] "
+                    << "[" << file << "]: "
                     << msg;
         }
         else
         {
             std::cout << "[" << current << "] "
                     << "[" << lvl_text << "] "
-                    << "[" << __func__  << "] "
-                    << "[" << __FILE__ << "]: "
+                    << "[" << func  << "] "
+                    << "[" << file << "]: "
                     << msg;
         }
         
     };
 }
+
+#define LOG(lvl, msg) Impulse::Logger::logf(lvl, msg, __FILE__, __func__)

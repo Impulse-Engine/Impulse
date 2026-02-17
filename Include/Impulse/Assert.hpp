@@ -11,7 +11,7 @@
 // to the namespace Impulse. They just are... use them carefully and remember
 // to use soft_assert above plain assert where possible!
 
-static inline std::string getTimestamp()
+inline std::string getTimestamp()
 {
     std::time_t now = std::time(nullptr);
     std::tm* tm = std::localtime(&now);
@@ -20,13 +20,7 @@ static inline std::string getTimestamp()
     return oss.str();
 }
 
-static inline void assert_fail(
-    const char* expr,
-    const char* msg,
-    const char* file,
-    int line,
-    const char* func,
-    bool fatal)
+inline void assert_fail(const char* expr, const char* msg, const char* file, int line, const char* func, bool fatal)
 {
     std::cerr << "[ASSERT " << (fatal ? "HARD" : "SOFT") << "] "
               << getTimestamp() << "\n"
