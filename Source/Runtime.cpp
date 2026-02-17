@@ -1,2 +1,1 @@
-#include <Impulse/Assert.hpp>
-#include <Impulse/Logger.hpp>
+#include <Impulse/Runtime/Runtime.hpp>
