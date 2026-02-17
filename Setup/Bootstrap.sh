@@ -41,7 +41,7 @@ case "$SYSTEM" in
         echo "Running on macOS..."
 
         OS_NAME=$(sw_vers -productName)
-        OS_VERSION=$(sv_vers -productVersion)
+        OS_VERSION=$(sw_vers -productVersion)
         KERNEL=$(uname -r)
         CPU=$(sysctl -n machdep.cpu.brand_string)
         LOGICAL_CORES=$(sysctl -n hw.ncpu)
@@ -62,6 +62,7 @@ case "$SYSTEM" in
     *)
         echo "Unknown system: \"$SYSTEM\""
         exit 1
+
         ;;
 esac
 
@@ -79,3 +80,19 @@ echo "CPU: $CPU"
 echo "Cores: $LOGICAL_CORES"
 echo "RAM: $MEMORY_READABLE\GiB"
 echo "----------------------------------------------"
+echo
+sleep 1
+echo "Would you like to start download dependencies?"
+echo "This will require a network and may take a few minutes."
+read -r -p "(y/n): " CHOICE
+
+if [[ "$CHOICE" =~ ^[Yy]$ ]]; then
+    echo "Collecting libraries..."
+
+    # todo, when we have deps.
+
+    exit 0
+else
+    echo "Skipping collecting libraries..."
+    exit 0
+fi
