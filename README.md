@@ -11,7 +11,6 @@
 <!-- We don't need dozens of epic flair badges, just a couple to show the license, approximate code size and CI build tests. -->
 ![GitHub top language](https://img.shields.io/github/languages/top/Impulse-Engine/Impulse?style=flat-square)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Impulse-Engine/Impulse?style=flat-square)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Impulse-Engine/Impulse/ci?style=flat-square)
 
 This is the canonical repository for Impulse. Impulse is a powerful, lightweight, runtime-first 3D engine written in C++. Impulse is focused on portability, performance, and rapid iteration. No bloat, no film-length build times.
 
