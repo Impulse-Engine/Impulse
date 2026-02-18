@@ -28,9 +28,10 @@ namespace Impulse::Platform
         std::string OSVersion;
         std::string CPUPrettyName;
         std::uint32_t CPULogicalCores;
-        std::uint32_t TotalPhysicalMemBytes;
-        std::uint32_t PageSizeBytes;
+        std::uint64_t TotalPhysicalMemBytes;
+        std::uint64_t PageSizeBytes;
     };
 
     const PlatformInfo& GetPlatformInfo();
+
 } // namespace Impulse::Platform
