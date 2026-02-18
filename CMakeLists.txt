@@ -10,13 +10,16 @@ cmake_minimum_required(VERSION 3.20)
 project(
 	ImpulseEngine
 	VERSION 0.0.1
-	LANGUAGES CXX
+	LANGUAGES C CXX
 )
 
 # Global settings, the usual stuff
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)	
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_C_STANDARD_REQUIRED ON)	
+set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
@@ -36,7 +39,7 @@ endif()
 
 # Engine Core
 add_library(
-	impulse_core
+	impulse_core STATIC
 	Source/Runtime.cpp
 	Source/Platform.cpp
 )
