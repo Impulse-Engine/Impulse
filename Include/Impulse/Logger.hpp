@@ -5,10 +5,7 @@
 #include <sstream>
 #include <iomanip>
 #include <ctime>
-
-#if defined(__linux__)
-    #include <cstdint>
-#endif
+#include <cstdint>
 
 namespace Impulse::Logger
 {
