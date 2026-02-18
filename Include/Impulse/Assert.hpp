@@ -14,9 +14,16 @@
 inline std::string getTimestamp()
 {
     std::time_t now = std::time(nullptr);
-    std::tm* tm = std::localtime(&now);
+    std::tm tm{};
+
+    #if defined(_WIN32) || defined(_WIN64)
+        localtime_s(&tm, &now);
+    #else
+        localtime_r(&now, &tm);
+    #endif
+
     std::ostringstream oss;
-    oss << std::put_time(tm, "%Y-%m-%d %H:%M:%S");
+    oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
     return oss.str();
 }
 

@@ -21,7 +21,14 @@ namespace Impulse::Logger
     inline std::string getTimeNow()
     {
         std::time_t ts = std::time(nullptr);
-        std::tm tm = *std::localtime(&ts);
+        std::tm tm{};
+
+        #ifdef _WIN32
+            localtime_s(&tm, &ts);
+        #else
+            localtime_r(&ts, &tm);
+        #endif
+
         std::ostringstream oss;
         oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
         return oss.str();
@@ -40,29 +47,19 @@ namespace Impulse::Logger
         }
     }
 
-    inline void logf(LogLevel lvl, const std::string& msg, const char *file, const char *func)
+    inline void logf(LogLevel lvl, std::string_view msg, const char* file, const char* func)
     {
-        std::string current = getTimeNow();
-        std::string lvl_text = getLevelAsString(lvl);
+        std::ostringstream line;
+        line << "[" << getTimeNow() << "] "
+             << "[" << getLevelAsString(lvl) << "] "
+             << "[" << func << "] "
+             << "[" << file << "]: "
+             << msg
+             << '\n';
 
-        if (lvl > LogLevel::WARN)
-        {
-            std::cerr << "[" << current << "] "
-                    << "[" << lvl_text << "] "
-                    << "[" << func << "] "
-                    << "[" << file << "]: "
-                    << msg;
-        }
-        else
-        {
-            std::cout << "[" << current << "] "
-                    << "[" << lvl_text << "] "
-                    << "[" << func  << "] "
-                    << "[" << file << "]: "
-                    << msg;
-        }
-        
-    };
+        if (lvl > LogLevel::WARN) std::cerr << line.str();
+        else                     std::cout << line.str();
+    }
 }
 
-#define LOG(lvl, msg) Impulse::Logger::logf(lvl, &msg, __FILE__, __func__)
+#define LOG(lvl, msg) Impulse::Logger::logf(lvl, msg, __FILE__, __func__)
