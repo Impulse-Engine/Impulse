@@ -43,7 +43,7 @@ namespace Impulse::Logger
         }
     }
 
-    inline void logf(LogLevel lvl, const std::string msg, const char *file, const char *func)
+    inline void logf(LogLevel lvl, const std::string& msg, const char *file, const char *func)
     {
         std::string current = getTimeNow();
         std::string lvl_text = getLevelAsString(lvl);
@@ -68,4 +68,4 @@ namespace Impulse::Logger
     };
 }
 
-#define LOG(lvl, msg) Impulse::Logger::logf(lvl, msg, __FILE__, __func__)
+#define LOG(lvl, msg) Impulse::Logger::logf(lvl, &msg, __FILE__, __func__)
