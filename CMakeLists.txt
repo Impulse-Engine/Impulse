@@ -38,6 +38,7 @@ endif()
 add_library(
 	impulse_core
 	Source/Runtime.cpp
+	Source/Platform.cpp
 )
 
 add_library(impulse::core ALIAS impulse_core)
